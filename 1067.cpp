@@ -59,4 +59,5 @@ int main() {
         }
     }
     print_tr(tr_root, 0);
+    return 0;
 }
