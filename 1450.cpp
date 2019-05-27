@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -10,6 +11,7 @@ struct pipeline {
 vector<pipeline> v;
 
 int main() {
+    ios_base::sync_with_stdio(false);
     int n, m;
     cin >> n >> m;
     vector<int> res(510, -1);
