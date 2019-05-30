@@ -12,8 +12,8 @@ bool compare(edge a, edge b) {
     return a.l < b.l;
 }
 
-int find(int x, int *parents) {
-    if (parents[x] != x) parents[x] = find(parents[x], parents);
+int find_parent(int x, int *parents) {
+    if (parents[x] != x) parents[x] = find_parent(parents[x], parents);
     return parents[x];
 }
 
@@ -33,12 +33,12 @@ int main() {
     int conn_counter = 0;
     for (int i = 0; i < n; i++) parents[i] = i;
     for (int i = 0; i < m; ++i) {
-        int x = find(connections[i].a, parents);
-        int y = find(connections[i].b, parents);
+        int x = find_parent(connections[i].a, parents);
+        int y = find_parent(connections[i].b, parents);
         if (x != y) {
             if (connections[i].l > max_l) max_l = connections[i].l;
             connections[i].l = -1;
-            parents[y] = x;
+            parents[x] = y;
             conn_counter++;
             if (conn_counter == n - 1) break;
         }
